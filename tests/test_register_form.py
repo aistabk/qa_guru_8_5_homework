@@ -27,8 +27,6 @@ def test_register_form():
 
     # выбор хобби (чекбокс)
     browser.element('label[for="hobbies-checkbox-1"]').click()
-    #browser.element('label[for="hobbies-checkbox-2"]').click()
-    #browser.element('label[for="hobbies-checkbox-3"]').click()
 
     # subject
     browser.element('#subjectsInput').type('P').press_enter().type('ar').press_enter()
