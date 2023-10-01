@@ -1,6 +1,6 @@
 import os
 
-from selene import browser, have
+from selene import browser, have, be
 
 
 def test_register_form():
@@ -26,13 +26,13 @@ def test_register_form():
     browser.element('.react-datepicker__day--019').click()
 
     # выбор хобби (чекбокс)
-    browser.element('label[for="hobbies-checkbox-1"]').click()
+    browser.element('//*[@id="hobbiesWrapper"]/div[2]/div[2]/label').click()
 
     # subject
     browser.element('#subjectsInput').type('P').press_enter().type('ar').press_enter()
 
     # добавление фото
-    browser.element('#uploadPicture').send_keys(os.path.abspath('test_image/test_image.jpg'))
+    browser.element('#uploadPicture').send_keys(os.path.abspath('test_image/hedgehog.jpg'))
 
     # добавление адреса
     browser.element('#currentAddress').type('221b, Baker Street, London, NW1 6XE, UK.')
@@ -44,15 +44,18 @@ def test_register_form():
     # submit
     browser.element('#submit').click()
 
-    browser.element('.table').all('tr td:nth-child(2)').should(have.texts(
+    browser.element('.table-dark').all('tr td:nth-child(2)').should(have.exact_texts(
         'Имя Фамилия',
         'testmail@mail.gg',
         'Other',
         '2589632147',
         '19 November,2004',
         'Physics, Arts',
-        'Sports',
-        'test_image.jpg',
+        'Reading',
+        'hedgehog.jpg',
         '221b, Baker Street, London, NW1 6XE, UK.',
         'NCR Delhi'
     ))
+
+
+

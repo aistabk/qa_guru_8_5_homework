@@ -6,7 +6,8 @@ from selene import browser
 def browser_config():
     browser.config.browser_name = 'chrome'
     browser.config.base_url = 'https://demoqa.com'
-    browser.config.window_width = 110
-    browser.config.window_height = 2300
+    #browser.config.timeout = 8.0
+    browser.config.window_width = 600
+    browser.config.window_height = 1900
     yield
     browser.quit()
